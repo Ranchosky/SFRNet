@@ -1,2 +1,2 @@
 # SFRNet
-# The code will be released soon
+# The code will be released soon.
