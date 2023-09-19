@@ -6,7 +6,7 @@ _base_ = [
 
 
 model = dict(
-    type='sfr_OrientedRCNN',
+    type='OrientedRCNN',
     pretrained='torchvision://resnet50',
     backbone=dict(
         type='ResNet',
@@ -39,7 +39,7 @@ model = dict(
             type='CrossEntropyLoss', use_sigmoid=True, loss_weight=1.0),
         loss_bbox=dict(type='SmoothL1Loss', beta=1.0 / 9.0, loss_weight=1.0)),
     roi_head=dict(
-        type='sfr_OBBStandardRoIHead',
+        type='OBBStandardRoIHead',
         bbox_roi_extractor=dict(
             type='OBBSingleRoIExtractor',
             roi_layer=dict(type='RoIAlignRotated', out_size=7, sample_num=2),
@@ -47,7 +47,7 @@ model = dict(
             extend_factor=(1.4, 1.2),
             featmap_strides=[4, 8, 16, 32]),
         bbox_head=dict(
-            type='sfr_OBB_BBoxHead',
+            type='sfr_OBBregconvBBoxHead',
             start_bbox_type='obb',
             end_bbox_type='obb',
             in_channels=256,

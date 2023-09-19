@@ -4,7 +4,6 @@ _base_ = [
     '../../_base_/default_runtime.py'
 ]
 
-
 model = dict(
     type='OrientedRCNN',
     pretrained='torchvision://resnet50',
